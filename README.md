@@ -48,7 +48,7 @@ node dist/call_face_detect.js
 # Status #
 
 Pre alpha.
-Setting up a play ground for experimenting.
+This project is currently a playground for experimenting with Google Vision API results in TypeScript.
 
 # Short Term Goals #
 
