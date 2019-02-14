@@ -6,15 +6,16 @@ VisionQL is a project to explore the use of declarative queries on top of ML bas
 
 There are many good computer vision system available.
 
-First backend is Google Vision API.
+First backend is [Google Vision API](https://cloud.google.com/vision/).
 
 Next backend to try:
 
-Tensforflow.js
+[TensorFlow.js](https://js.tensorflow.org/)
 
-# How do run #
+# How To Run #
 
-```
+``` bash
+
 git clone git@github.com:sami-badawi/visionql.git
 
 cd visionql
