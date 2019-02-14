@@ -1,18 +1,31 @@
 # VisionQL #
 
-VisionQL is a project to explore the use of declarative queries on top of ML based computer vision. Think SQL for computer vision. It is written in TypeScript.
+VisionQL is a project to explore the use of declarative queries on top of ML based computer vision. Think SQL for computer vision. 
+
+It is a Node.js application written in TypeScript. 
+There is currently not a webserver, Node.js as thing wrappers around the api call. It has been choosen so TypeScript can be used to process the response.
+
 
 # Backend #
 
 There are many good computer vision system available.
 
-First backend is [Google Vision API](https://cloud.google.com/vision/).
+First backend for VisionQL is [Google Vision API](https://cloud.google.com/vision/).
 
-Next backend to try:
+It is high quality. You have to be a user of Google Cloud Platform, but it is relatively easy and cheap to get setup to experiment.
 
-[TensorFlow.js](https://js.tensorflow.org/)
+[TensorFlow.js](https://js.tensorflow.org/) will be the next backend to try since that can be called directly.
+
+## Ensemble ML methods ##
+
+It is natural for a declarative system to use ML ensemble methods. So have more than one backend and possibly look for different features in the results from different backends.
+
 
 # How To Run #
+
+Currently the system is not doing a lot.
+
+If you want to try it do the following:
 
 ``` bash
 
@@ -37,5 +50,5 @@ Setting up a play ground for experimenting.
 
 # Short Term Goals #
 
-* Get Google Vision API working better with TypeScritp defintions
+* Get Google Vision API working better with TypeScript defintions
 * Systematic way of handling images and output of images
