@@ -45,6 +45,15 @@ node dist/call_face_detect.js
 
 ```
 
+Result of running face detect will be store in file:
+
+`output/face_detect_result.json`
+
+The project has checked in example file:
+
+`output/example_face_detect_result.json`
+
+
 # Status #
 
 Pre alpha.
