@@ -1,4 +1,5 @@
 import vision from '@google-cloud/vision';
+import * as fs from 'fs';
 
 const client = new vision.ImageAnnotatorClient();
 
@@ -12,7 +13,9 @@ const request = {
 
 function outputResponse(response: any) {
     try {
-        console.log(response);
+        const responseJson = JSON.stringify(response);
+        console.log(responseJson);
+        fs.writeFileSync("./output/face_detect_result.json", responseJson);
         const faceAnnotations: any[] = response[0]["faceAnnotations"];
         console.log("faceAnnotations.length", faceAnnotations.length);
         console.log("First face found:\n", faceAnnotations[0]);

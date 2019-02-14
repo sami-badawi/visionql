@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/sami-badawi/visionql#readme",
   "dependencies": {
-    "@google-cloud/vision": "^0.24.0"
+    "@google-cloud/vision": "^0.24.0",
+    "fs": "0.0.1-security"
   }
 }
