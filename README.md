@@ -35,6 +35,8 @@ cd visionql
 
 export GOOGLE_APPLICATION_CREDENTIALS=
 
+npm i
+
 npm run build
 
 node dist/call_label.js 
