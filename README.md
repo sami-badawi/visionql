@@ -40,7 +40,7 @@ It is natural for a declarative system to use ML ensemble methods. So have more 
 
 # How To Run #
 
-Currently the system is not doing a lot.
+Currently the can do 2 Google Vision API calls. For both you need to have a file with service account credentials.
 
 If you want to try it do the following:
 
@@ -50,7 +50,7 @@ git clone git@github.com:sami-badawi/visionql.git
 
 cd visionql
 
-export GOOGLE_APPLICATION_CREDENTIALS=
+export GOOGLE_APPLICATION_CREDENTIALS=/home/yourname/yourpath/key.json 
 
 npm i
 
