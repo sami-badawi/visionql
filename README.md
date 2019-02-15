@@ -3,7 +3,24 @@
 VisionQL is a project to explore the use of declarative queries on top of ML based computer vision. Think SQL for computer vision. 
 
 It is a Node.js application written in TypeScript. 
-There is currently not a webserver, Node.js as thing wrappers around the api call. It has been choosen so TypeScript can be used to process the response.
+There is currently not a webserver, Node.js is a thin wrappers around the Google Vision api call. 
+
+It has been choosen so TypeScript can be used to process the response.
+
+# Interesting Queries #
+
+What kind of query would be interesting?
+
+* Select areas where there is red human hair.
+* Count number visible eyes in women with blue jeans.
+
+# Queries Technology #
+
+**SQL** does not lend itself well to this, since it is dealing with flat relational data.
+
+[**PostGIS**](https://postgis.net) is a SQL frontend to a lot of computational geometry code written in C++. It is well suited for dealing with geometric operations on point, lines and polygons. However it is missing hierarchical nature of computer vision.
+
+[**Mini Kanaren**](https://en.wikipedia.org/wiki/MiniKanren) is a logic programming language with several implementation in JavaScritp. That is an option that is worth exploring.
 
 
 # Backend #
@@ -45,10 +62,19 @@ node dist/call_face_detect.js
 
 ```
 
+Result of running face detect will be store in file:
+
+`output/face_detect_result.json`
+
+The project has checked in example file:
+
+`output/example_face_detect_result.json`
+
+
 # Status #
 
 Pre alpha.
-Setting up a play ground for experimenting.
+This project is currently a playground for experimenting with Google Vision API results in TypeScript.
 
 # Short Term Goals #
 
