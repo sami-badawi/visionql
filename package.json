@@ -1,12 +1,14 @@
 {
   "name": "visionql",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
-  "main": "dist/call_image_label.js",
+  "main": "dist/call_face_detect.js",
   "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
-    "start": "node dist/call_image_label.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "testWithCoverage": "nyc -r lcov -e .ts -x \"tests/*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,15 @@
   "dependencies": {
     "@google-cloud/vision": "^0.24.0",
     "fs": "0.0.1-security"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
   }
 }

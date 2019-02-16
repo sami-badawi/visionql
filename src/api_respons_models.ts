@@ -1,31 +1,31 @@
 /**
  * Interfaces used in Google Vision API results
  */
-export interface Point2D {
+export interface IPoint2D {
     x: number;
     y: number;
 }
 
-export interface Point3D {
+export interface IPoint3D {
     x: number;
     y: number;
     z: number;
 }
 
-export interface FaceFeature {
+export interface IFaceFeature {
     type: string;
-    position: Point3D;
+    position: IPoint3D;
 }
 
-export interface Vertex2Array {
-    vertices: Array<Point2D>;
+export interface IVertex2Array {
+    vertices: IPoint2D[];
     normalizedVertices?: any;
 }
 
-export interface FaceAnnotation {
-    landmark: Array<FaceFeature>;
-    boundingPoly: Array<any>;
-    fdBoundingPoly: Array<any>;
+export interface IFaceAnnotation {
+    landmark: IFaceFeature[];
+    boundingPoly: any[];
+    fdBoundingPoly: any[];
     rollAngle: number;
     panAngle: number;
     tiltAngle: number;
@@ -40,6 +40,6 @@ export interface FaceAnnotation {
     headwearLikelihood: string;
 }
 
-export interface ApiVisionResponse {
-    faceAnnotations: Array<FaceAnnotation>;
+export interface IApiVisionResponse {
+    faceAnnotations: IFaceAnnotation[];
 }
