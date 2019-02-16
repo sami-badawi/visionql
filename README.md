@@ -27,11 +27,24 @@ What kind of query would be interesting?
 
 There are many good computer vision system available.
 
+## Google Vision API ##
+
 First backend for VisionQL is [Google Vision API](https://cloud.google.com/vision/).
 
 It is high quality. You have to be a user of Google Cloud Platform, but it is relatively easy and cheap to get setup to experiment.
 
-[TensorFlow.js](https://js.tensorflow.org/) will be the next backend to try since that can be called directly.
+## TensorFlow.js ##
+
+[**TensorFlow.js**](https://js.tensorflow.org/) will be the next backend to try. The model can running directly in the browser. So there is no need to set up API keys.
+
+
+### TensorFlow.js models ###
+
+TensorFlow.js has the following 2 models:
+
+* [**PoseNet**](https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5) for human pose estimation.
+* [**BodyPix**](https://github.com/tensorflow/tfjs-models/tree/master/body-pix) for person segmentation.
+
 
 ## Ensemble ML methods ##
 
