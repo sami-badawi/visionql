@@ -16,7 +16,7 @@ export default class SimpleQuery {
 
   public apiVisionResponseArray: api_respons_models.IApiVisionResponse[] = undefined;
 
-  constructor(public filename?: string, public data?) {
+  constructor(public filename?: string, public data?, public verboseLogging?: boolean) {
   }
 
   public async loadData() {
@@ -34,14 +34,18 @@ export default class SimpleQuery {
       console.log(`Start read from ${this.filename}`);
       const res = await this.loadData();
       const jsonString = JSON.stringify(res);
-      console.log(`======= data: ${jsonString}`);
+      if (this.verboseLogging) {
+        console.log(`======= data: ${jsonString}`);
+      }
       this.data = res;
     }
   }
 
   public async castToTopVisionResponse(): Promise<api_respons_models.IApiVisionResponse[]> {
     await this.init();
-    console.log(`======= this.data: ${this.data}`);
+    if (this.verboseLogging) {
+      console.log(`======= this.data: ${this.data}`);
+    }
     this.apiVisionResponseArray = SimpleQuery.castToIApiVisionResponseArray(this.data);
     return this.apiVisionResponseArray;
   }

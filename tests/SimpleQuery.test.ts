@@ -27,4 +27,10 @@ describe("SimpleQuery", () => {
     expect(topVision[0].faceAnnotations.filter(
       (face: IFaceAnnotation) => face.joyLikelihood === "VERY_LIKELY").length ).equal(1);
   });
+
+  it("Count happy faces", async () => {
+    const simpleQuery = new SimpleQuery("./output/wakeupcat_jpg/label_detect_result.json");
+    const topVision = await simpleQuery.castToTopVisionResponse();
+    expect(topVision[0].labelAnnotations.length).equal(10);
+  });
 });
