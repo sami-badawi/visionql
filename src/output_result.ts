@@ -26,6 +26,7 @@ export class OutputResult {
             fs.ensureDir(outputDir);
             await fs.writeJson(outputFile, data);
             console.log(`Finished writing to ${outputFile}`);
+            return outputFile;
         } catch (err) {
             console.log(`Failed writing to ${outputFile}. ${err}`);
         }
