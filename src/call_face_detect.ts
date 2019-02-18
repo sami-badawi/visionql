@@ -1,19 +1,15 @@
 import vision from "@google-cloud/vision";
 import * as argparse from "argparse";
 import * as fs from "fs";
+import output_result from "./output_result";
 
 const pathToImageDefault = "gs://sami-vision-project/AI-panel-2018-02-15.jpg";
 
-async function outputResponse(response: any) {
+async function outputResponse(response: any, pathToImage: string) {
     try {
         const responseJson = JSON.stringify(response);
         console.log(responseJson);
-        await fs.writeFile("./output/face_detect_result.json", responseJson, (err) => {
-          if (err) {
-            throw err;
-          }
-          console.log("The file has been saved!");
-        });
+        await output_result.writeResultData(response, "face_detect_result.json", pathToImage);
         const faceAnnotations: any[] = response[0].faceAnnotations;
         console.log("faceAnnotations.length", faceAnnotations.length);
         console.log("First face found:\n", faceAnnotations[0]);
@@ -31,7 +27,7 @@ async function callFaceDetect(pathToImage: string) {
   try {
     const client = new vision.ImageAnnotatorClient();
     const response = await client.faceDetection(request);
-    await outputResponse(response);
+    await outputResponse(response, pathToImage);
   }  catch (err) {
     console.error(err);
   }
