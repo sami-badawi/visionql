@@ -3,9 +3,6 @@ import * as fs from "fs-extra";
 import * as api_respons_models from "./api_respons_models";
 
 export default class SimpleQuery {
-  public static addition(a: number, b: number): number {
-    return a + b;
-  }
 
   /**
    * @param input top level input coming from Google Vision API
@@ -48,5 +45,18 @@ export default class SimpleQuery {
     }
     this.apiVisionResponseArray = SimpleQuery.castToIApiVisionResponseArray(this.data);
     return this.apiVisionResponseArray;
+  }
+
+  /**
+   * Example of canned query
+   */
+  public faceCount(): number {
+    const firstResult = this.apiVisionResponseArray[0];
+    return firstResult.faceAnnotations.length;
+  }
+
+  public happyFaceCount(): number {
+    const firstResult = this.apiVisionResponseArray[0];
+    return firstResult.faceAnnotations.filter( (face) => face.joyLikelihood === "VERY_LIKELY").length;
   }
 }
