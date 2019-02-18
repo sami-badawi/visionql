@@ -7,14 +7,21 @@ export default class SimpleQuery {
     return a + b;
   }
 
+  /**
+   * @param input top level input coming from Google Vision API
+   */
+  public static castToIApiVisionResponseArray(input: any): api_respons_models.IApiVisionResponse[] {
+    return input as api_respons_models.IApiVisionResponse[];
+  }
+
+  public apiVisionResponseArray: api_respons_models.IApiVisionResponse[] = undefined;
+
   constructor(public filename?: string, public data?) {
   }
 
   public async loadData() {
     try {
       const res = await fs.readJson(this.filename);
-      // const jsonString = JSON.stringify(res);
-      // console.log(`======= data: ${jsonString}`);
       return res;
     } catch (err) {
       console.log(`Error reading ${this.filename}. ${err}`);
@@ -32,9 +39,10 @@ export default class SimpleQuery {
     }
   }
 
-  public async castToTopVisionResponse(): Promise<api_respons_models.IApiVisionResponse> {
+  public async castToTopVisionResponse(): Promise<api_respons_models.IApiVisionResponse[]> {
     await this.init();
     console.log(`======= this.data: ${this.data}`);
-    return this.data[0] as api_respons_models.IApiVisionResponse;
+    this.apiVisionResponseArray = SimpleQuery.castToIApiVisionResponseArray(this.data);
+    return this.apiVisionResponseArray;
   }
 }
