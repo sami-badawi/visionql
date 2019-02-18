@@ -14,7 +14,70 @@ What kind of query would be interesting?
 * Select areas where there is red human hair.
 * Count number visible eyes in women with blue jeans.
 
-# Queries Technology #
+
+
+# How To Run #
+
+Currently the can do 2 Google Vision API calls. For both you need to have a file with service account credentials.
+
+If you want to try it do the following:
+
+``` bash
+
+git clone git@github.com:sami-badawi/visionql.git
+
+cd visionql
+
+export GOOGLE_APPLICATION_CREDENTIALS=/home/yourname/yourpath/key.json 
+
+npm i
+
+npm run build
+
+node dist/call_image_label.js --file_path resources/wakeupcat.jpg --query yes
+
+node dist/call_face_detect.js --gs_path gs://sami-vision-project/AI-panel-2018-02-15.jpg --query yes
+
+```
+
+### Label Results ###
+
+Result of running call_image_label will be store in file:
+
+`output/wakeupcat_jpg/label_detect_result.json`
+
+If the label program was run with `--query yes` it will output if the picture has cats, dogs and internet memes.
+
+```
+for image: ./resources/wakeupcat.jpg: isMeme: true, hasCat: true, hasDog: false
+```
+
+### Face Detect Results ###
+
+Result of running face detect will be store in file:
+
+`output/AI-panel-2018-02-15_jpg/face_detect_result.json`
+
+The project has an example file:
+
+`output/example_face_detect_result.json`
+
+If the face detect program was run with `--query yes` it will count number of faces and number of happy faces:
+
+```
+for image: gs://sami-vision-project/AI-panel-2018-02-15.jpg: faceCount: 4; happyFaceCount: 1
+```
+
+# Current Queries Technology #
+
+Currently the application is just doing a few canned queries.
+
+It is easier to write a new canned query due to the help from TypeScripts types.
+
+# Next Queries Technology #
+
+The point of VisionQL is that it should work with a more declarative queries.
+Here is a short discussion of a few candidates for this:
 
 **SQL** does not lend itself well to this, since it is dealing with flat relational data.
 
@@ -51,45 +114,9 @@ TensorFlow.js has the following 2 models:
 It is natural for a declarative system to use ML ensemble methods. So have more than one backend and possibly look for different features in the results from different backends.
 
 
-# How To Run #
-
-Currently the can do 2 Google Vision API calls. For both you need to have a file with service account credentials.
-
-If you want to try it do the following:
-
-``` bash
-
-git clone git@github.com:sami-badawi/visionql.git
-
-cd visionql
-
-export GOOGLE_APPLICATION_CREDENTIALS=/home/yourname/yourpath/key.json 
-
-npm i
-
-npm run build
-
-node dist/call_label.js 
-
-node dist/call_face_detect.js
-
-```
-
-Result of running face detect will be store in file:
-
-`output/face_detect_result.json`
-
-The project has checked in example file:
-
-`output/example_face_detect_result.json`
-
-
 # Status #
 
 Pre alpha.
 This project is currently a playground for experimenting with Google Vision API results in TypeScript.
 
-# Short Term Goals #
 
-* Get Google Vision API working better with TypeScript defintions
-* Systematic way of handling images and output of images
