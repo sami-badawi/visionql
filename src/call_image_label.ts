@@ -1,7 +1,6 @@
 import output_result from "./output_result";
 
 import * as argparse from "argparse";
-import * as fs from "fs";
 
 // Imports the Google Cloud client library
 import vision from "@google-cloud/vision";

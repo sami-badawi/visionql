@@ -1,6 +1,5 @@
 import vision from "@google-cloud/vision";
 import * as argparse from "argparse";
-import * as fs from "fs";
 import output_result from "./output_result";
 
 const pathToImageDefault = "gs://sami-vision-project/AI-panel-2018-02-15.jpg";
