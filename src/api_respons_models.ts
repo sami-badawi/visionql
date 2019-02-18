@@ -40,6 +40,31 @@ export interface IFaceAnnotation {
     headwearLikelihood: string;
 }
 
+export interface ILabelAnnotations {
+    locations: any[];
+    properties: any[];
+    mid: string;
+    locale: string;
+    description: string;
+    score: number;
+    confidence: number;
+    topicality: number;
+    boundingPoly: any;
+  }
+
 export interface IApiVisionResponse {
     faceAnnotations: IFaceAnnotation[];
+    landmarkAnnotations: any[];
+    logoAnnotations: any[];
+    labelAnnotations: ILabelAnnotations[];
+    textAnnotations: any[];
+    localizedObjectAnnotations: any[];
+    safeSearchAnnotation: any;
+    imagePropertiesAnnotation: any;
+    error: any;
+    cropHintsAnnotation: any;
+    fullTextAnnotation: any;
+    webDetection: any;
+    productSearchResults: any;
+    context: any;
 }
