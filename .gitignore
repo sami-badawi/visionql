@@ -3,5 +3,6 @@ dist
 package-lock.json
 output/face_detect_result.json
 !output/example_face_detect_result.json
+!./output/wakeupcat_jpg/label_detect_result.json
 output
 resources/AI-panel-2018-02-15.jpg

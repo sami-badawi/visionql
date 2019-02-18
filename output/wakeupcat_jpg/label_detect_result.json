@@ -1,0 +1,129 @@
+[
+  {
+    "faceAnnotations": [],
+    "landmarkAnnotations": [],
+    "logoAnnotations": [],
+    "labelAnnotations": [
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/01yrx",
+        "locale": "",
+        "description": "Cat",
+        "score": 0.9895679950714111,
+        "confidence": 0,
+        "topicality": 0.9895679950714111,
+        "boundingPoly": null
+      },
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/0307l",
+        "locale": "",
+        "description": "Felidae",
+        "score": 0.9541760087013245,
+        "confidence": 0,
+        "topicality": 0.9541760087013245,
+        "boundingPoly": null
+      },
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/01l7qd",
+        "locale": "",
+        "description": "Whiskers",
+        "score": 0.953809380531311,
+        "confidence": 0,
+        "topicality": 0.953809380531311,
+        "boundingPoly": null
+      },
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/01k74n",
+        "locale": "",
+        "description": "Facial expression",
+        "score": 0.9447915554046631,
+        "confidence": 0,
+        "topicality": 0.9447915554046631,
+        "boundingPoly": null
+      },
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/07k6w8",
+        "locale": "",
+        "description": "Small to medium-sized cats",
+        "score": 0.9443168044090271,
+        "confidence": 0,
+        "topicality": 0.9443168044090271,
+        "boundingPoly": null
+      },
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/0b75wg4",
+        "locale": "",
+        "description": "Photo caption",
+        "score": 0.9422707557678223,
+        "confidence": 0,
+        "topicality": 0.9422707557678223,
+        "boundingPoly": null
+      },
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/025rxrz",
+        "locale": "",
+        "description": "Internet meme",
+        "score": 0.8690592646598816,
+        "confidence": 0,
+        "topicality": 0.8690592646598816,
+        "boundingPoly": null
+      },
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/04c41_",
+        "locale": "",
+        "description": "European shorthair",
+        "score": 0.8433250188827515,
+        "confidence": 0,
+        "topicality": 0.8433250188827515,
+        "boundingPoly": null
+      },
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/02rcwpb",
+        "locale": "",
+        "description": "Asian",
+        "score": 0.8278073072433472,
+        "confidence": 0,
+        "topicality": 0.8278073072433472,
+        "boundingPoly": null
+      },
+      {
+        "locations": [],
+        "properties": [],
+        "mid": "/m/05wkw",
+        "locale": "",
+        "description": "Photography",
+        "score": 0.770028293132782,
+        "confidence": 0,
+        "topicality": 0.770028293132782,
+        "boundingPoly": null
+      }
+    ],
+    "textAnnotations": [],
+    "localizedObjectAnnotations": [],
+    "safeSearchAnnotation": null,
+    "imagePropertiesAnnotation": null,
+    "error": null,
+    "cropHintsAnnotation": null,
+    "fullTextAnnotation": null,
+    "webDetection": null,
+    "productSearchResults": null,
+    "context": null
+  }
+]
