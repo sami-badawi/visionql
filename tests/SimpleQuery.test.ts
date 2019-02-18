@@ -42,4 +42,22 @@ describe("SimpleQuery", () => {
     const topVision = await simpleQuery.castToTopVisionResponse();
     expect(topVision[0].labelAnnotations.length).equal(10);
   });
+
+  it("Has cat query", async () => {
+    const simpleQuery = new SimpleQuery("./output/wakeupcat_jpg/label_detect_result.json");
+    const topVision = await simpleQuery.castToTopVisionResponse();
+    expect(simpleQuery.hasCat()).equal(true);
+  });
+
+  it("Has dog query", async () => {
+    const simpleQuery = new SimpleQuery("./output/wakeupcat_jpg/label_detect_result.json");
+    const topVision = await simpleQuery.castToTopVisionResponse();
+    expect(simpleQuery.hasDog()).equal(false);
+  });
+
+  it("Internet meme query", async () => {
+    const simpleQuery = new SimpleQuery("./output/wakeupcat_jpg/label_detect_result.json");
+    const topVision = await simpleQuery.castToTopVisionResponse();
+    expect(simpleQuery.isMeme()).equal(true);
+  });
 });

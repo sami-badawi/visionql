@@ -22,6 +22,11 @@ export interface IVertex2Array {
     normalizedVertices?: any;
 }
 
+/**
+ * Not sure if this is complete
+ */
+type StringLikelihood = "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
+
 export interface IFaceAnnotation {
     landmark: IFaceFeature[];
     boundingPoly: any[];
@@ -31,13 +36,13 @@ export interface IFaceAnnotation {
     tiltAngle: number;
     detectionConfidence: number;
     landmarkingConfidence: number;
-    joyLikelihood: string;
-    sorrowLikelihood: string;
-    angerLikelihood: string;
-    surpriseLikelihood: string;
-    underExposedLikelihood: string;
-    blurredLikelihood: string;
-    headwearLikelihood: string;
+    joyLikelihood: StringLikelihood;
+    sorrowLikelihood: StringLikelihood;
+    angerLikelihood: StringLikelihood;
+    surpriseLikelihood: StringLikelihood;
+    underExposedLikelihood: StringLikelihood;
+    blurredLikelihood: StringLikelihood;
+    headwearLikelihood: StringLikelihood;
 }
 
 export interface ILabelAnnotations {

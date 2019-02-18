@@ -59,4 +59,19 @@ export default class SimpleQuery {
     const firstResult = this.apiVisionResponseArray[0];
     return firstResult.faceAnnotations.filter( (face) => face.joyLikelihood === "VERY_LIKELY").length;
   }
+
+  public hasCat(): boolean {
+    const firstResult = this.apiVisionResponseArray[0];
+    return 0 <= firstResult.labelAnnotations.findIndex((label) => label.description === "Cat");
+  }
+
+  public hasDog(): boolean {
+    const firstResult = this.apiVisionResponseArray[0];
+    return 0 <= firstResult.labelAnnotations.findIndex((label) => label.description === "Dog");
+  }
+
+  public isMeme(): boolean {
+    const firstResult = this.apiVisionResponseArray[0];
+    return 0 <= firstResult.labelAnnotations.findIndex((label) => label.description === "Internet meme");
+  }
 }
