@@ -1,4 +1,5 @@
 import vision from "@google-cloud/vision";
+import * as argparse from "argparse";
 import * as fs from "fs";
 
 const pathToImageDefault = "gs://sami-vision-project/AI-panel-2018-02-15.jpg";
@@ -36,4 +37,17 @@ async function callFaceDetect(pathToImage: string) {
   }
 }
 
-callFaceDetect(pathToImageDefault);
+const parser = new argparse.ArgumentParser({
+  addHelp: true,
+  description: "Call GCP Vision API for image label."
+});
+parser.addArgument("--gs_path", {
+  defaultValue: pathToImageDefault,
+  help: "Path to which the model will be saved after training.",
+  type: "string"
+});
+const args = parser.parseArgs();
+
+console.log(`Processing: ${args.gs_path}`);
+
+callFaceDetect(args.gs_path);
