@@ -8,8 +8,8 @@ There is currently not a webserver, Node.js is a thin wrappers around the Google
 TypeScript make is easier and safer to write query against the response.
 
 The goal is that VisionQL should have several backends. Next backend is going to be TensforFlow.js. 
-Each backend will return a result in josn. 
-VisionQL should know the result types for all of the backends. This will make it easier to query an ensamble of computer vision models.
+Each backend will return a result in json. 
+VisionQL should have TypeScript definitions for all of the backends. This will make it easier to query an ensamble of computer vision models.
 
 
 # How To Run #
@@ -29,11 +29,28 @@ npm i
 
 npm run build
 
-node dist/call_image_label.js --file_path resources/wakeupcat.jpg --query yes
-
 node dist/call_face_detect.js --gs_path gs://sami-vision-project/AI-panel-2018-02-15.jpg --query yes
 
+node dist/call_image_label.js --file_path resources/wakeupcat.jpg --query yes
+
 ```
+
+### Face Detect Results ###
+
+Result of running *call_face_detect* will be store in file:
+
+`output/AI-panel-2018-02-15_jpg/face_detect_result.json`
+
+If the face detect program was run with `--query yes` it will count number of faces and number of happy faces:
+
+```
+for image: gs://sami-vision-project/AI-panel-2018-02-15.jpg: faceCount: 4; happyFaceCount: 1
+```
+
+The project also has an example output file:
+
+`output/example_face_detect_result.json`
+
 
 ### Label Results ###
 
@@ -47,21 +64,6 @@ If the label program was run with `--query yes` it will output if the picture ha
 for image: ./resources/wakeupcat.jpg: isMeme: true, hasCat: true, hasDog: false
 ```
 
-### Face Detect Results ###
-
-Result of running *call_face_detect* will be store in file:
-
-`output/AI-panel-2018-02-15_jpg/face_detect_result.json`
-
-The project also has an example file:
-
-`output/example_face_detect_result.json`
-
-If the face detect program was run with `--query yes` it will count number of faces and number of happy faces:
-
-```
-for image: gs://sami-vision-project/AI-panel-2018-02-15.jpg: faceCount: 4; happyFaceCount: 1
-```
 
 # Current Queries Technology #
 
