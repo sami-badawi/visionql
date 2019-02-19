@@ -1,6 +1,6 @@
 {
   "name": "visionql",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/call_face_detect.js",
   "scripts": {
@@ -23,7 +23,6 @@
   "dependencies": {
     "@google-cloud/vision": "^0.24.0",
     "argparse": "^1.0.10",
-    "fs": "0.0.1-security",
     "fs-extra": "^7.0.1"
   },
   "devDependencies": {
