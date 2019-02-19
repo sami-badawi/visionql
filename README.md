@@ -3,24 +3,19 @@
 VisionQL is a project to explore the use of declarative queries on top of ML based computer vision. Think SQL for computer vision. 
 
 It is a Node.js application written in TypeScript. 
-There is currently not a webserver, Node.js is a thin wrappers around the Google Vision api call. 
+There is currently not a webserver, Node.js is a thin wrappers around the Google Vision api calls. 
 
-It has been choosen so TypeScript can be used to process the response.
+TypeScript make is easier and safer to write query against the response.
 
-# Interesting Queries #
-
-What kind of query would be interesting?
-
-* Select areas where there is red human hair.
-* Count number visible eyes in women with blue jeans.
-
+The goal is that VisionQL should have several backends. Next backend is going to be TensforFlow.js. 
+Each backend will return a result in josn. 
+VisionQL should know the result types for all of the backends. This will make it easier to query an ensamble of computer vision models.
 
 
 # How To Run #
 
-Currently the can do 2 Google Vision API calls. For both you need to have a file with service account credentials.
-
-If you want to try it do the following:
+Currently VisionQL can do 2 Google Vision API calls. 
+For both you need to have a file with service account credentials.
 
 ``` bash
 
@@ -42,7 +37,7 @@ node dist/call_face_detect.js --gs_path gs://sami-vision-project/AI-panel-2018-0
 
 ### Label Results ###
 
-Result of running call_image_label will be store in file:
+Result of running *call_image_label* will be store in file:
 
 `output/wakeupcat_jpg/label_detect_result.json`
 
@@ -54,11 +49,11 @@ for image: ./resources/wakeupcat.jpg: isMeme: true, hasCat: true, hasDog: false
 
 ### Face Detect Results ###
 
-Result of running face detect will be store in file:
+Result of running *call_face_detect* will be store in file:
 
 `output/AI-panel-2018-02-15_jpg/face_detect_result.json`
 
-The project has an example file:
+The project also has an example file:
 
 `output/example_face_detect_result.json`
 
@@ -70,9 +65,51 @@ for image: gs://sami-vision-project/AI-panel-2018-02-15.jpg: faceCount: 4; happy
 
 # Current Queries Technology #
 
-Currently the application is just doing a few canned queries.
+Currently the application has a few canned queries.
 
-It is easier to write a new canned query due to the help from TypeScripts types.
+TypeScripts types makes in easy and safe write these queries.
+
+
+### Example Happy Face Count Query ###
+
+``` TypeScript
+  public happyFaceCount(): number {
+    const firstResult = this.apiVisionResponseArray[0];
+    return firstResult.faceAnnotations.filter( (face) => face.joyLikelihood === "VERY_LIKELY").length;
+  }
+```
+
+### Example Cat Query ###
+
+```
+  public hasCat(): boolean {
+    const firstResult = this.apiVisionResponseArray[0];
+    return 0 <= firstResult.labelAnnotations.findIndex((label) => label.description === "Cat");
+  }
+```
+
+# Backends #
+
+There are many good computer vision system available.
+
+## Google Vision API ##
+
+First backend for VisionQL is [Google Vision API](https://cloud.google.com/vision/).
+
+It is high quality. You have to be a user of Google Cloud Platform, but it is relatively easy and cheap to get setup to experiment.
+
+## TensorFlow.js ##
+
+[**TensorFlow.js**](https://js.tensorflow.org/) will be the next backend. The model can run in the browser or on Node.js. There is no need for GCP API keys.
+
+
+### TensorFlow.js models ###
+
+TensorFlow.js has the following 2 models:
+
+* [**PoseNet**](https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5) for human pose estimation.
+* [**BodyPix**](https://github.com/tensorflow/tfjs-models/tree/master/body-pix) for person segmentation.
+
 
 # Next Queries Technology #
 
@@ -86,37 +123,6 @@ Here is a short discussion of a few candidates for this:
 [**Mini Kanaren**](https://en.wikipedia.org/wiki/MiniKanren) is a logic programming language with several implementation in JavaScritp. That is an option that is worth exploring.
 
 
-# Backend #
-
-There are many good computer vision system available.
-
-## Google Vision API ##
-
-First backend for VisionQL is [Google Vision API](https://cloud.google.com/vision/).
-
-It is high quality. You have to be a user of Google Cloud Platform, but it is relatively easy and cheap to get setup to experiment.
-
-## TensorFlow.js ##
-
-[**TensorFlow.js**](https://js.tensorflow.org/) will be the next backend to try. The model can running directly in the browser. So there is no need to set up API keys.
-
-
-### TensorFlow.js models ###
-
-TensorFlow.js has the following 2 models:
-
-* [**PoseNet**](https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5) for human pose estimation.
-* [**BodyPix**](https://github.com/tensorflow/tfjs-models/tree/master/body-pix) for person segmentation.
-
-
-## Ensemble ML methods ##
-
-It is natural for a declarative system to use ML ensemble methods. So have more than one backend and possibly look for different features in the results from different backends.
-
-
 # Status #
 
-Pre alpha.
-This project is currently a playground for experimenting with Google Vision API results in TypeScript.
-
-
+VisionQL is in pre alpha. It is currently a playground for experimenting with Google Vision API results in TypeScript, but it is pretty easy to setup and work with.
