@@ -9,25 +9,41 @@ import get_image_data from "get-image-data";
 class PoseNetRunner {
 
     public net: posenet.PoseNet;
+    protected dirty = true;
 
     public async init() {
-        const net = await posenet.load();
-        console.log(`====== In init(): net: ${net}`);
-        this.net = net;
-        return net;
+        try {
+            console.log(`====== Start init()`);
+            const net = await posenet.load();
+            console.log(`====== In init(): net: ${net}`);
+            this.net = net;
+            this.dirty = false;
+            return net;
+        } catch (err) {
+            this.dirty = true;
+            console.log(`init() error: ${err}`);
+        }
     }
 
     public async singlePose(imagefile: string) {
+        console.log(`Start singlePose`);
         const imageScaleFactor = 0.50;
         const flipHorizontal = false;
         const outputStride = 16;
 
         let imageElement: ImageData;
+        try {
+
+        const typeString = typeof get_image_data;
+        console.log(`typeString: ${typeString}`);
 
         get_image_data(imagefile, (err, info) => {
-            // const data = info.data;
-            // const height = info.height;
-            // const width = info.width;
+            if (err) {
+                console.log(`============== err: ${err}`);
+            }
+            const data = info.data;
+            const height = info.height;
+            const width = info.width;
             // for (var i = 0, l = data.length; i < l; i += 4) {
             //   var red = data[i];
             //   var green = data[i + 1];
@@ -35,12 +51,27 @@ class PoseNetRunner {
             //   var alpha = data[i + 3];
             // }
             imageElement = info;
+            console.log(`====== info read: ${imagefile}, height: ${height}, width: ${width}`);
+            console.log(`====== this.net: ${this.net}`);
+            if (this.dirty) {
+                // tslint:disable-next-line:no-empty
+                this.init().then(() => {
+                }).catch((raeason) => {
+                    console.log(`Fail in init() ${raeason}`);
+                });
+            }
+            const posePromis = this.net.estimateSinglePose(
+                imageElement, imageScaleFactor, flipHorizontal, outputStride);
+            posePromis.then((pose) => {
+                const poseJson = JSON.stringify(pose);
+                console.log(poseJson);
+            }, (reason) => {
+                console.log(`reason: ${reason}`);
+            });
           });
-
-        console.log(`this.net: ${this.net}`);
-        const pose = await this.net.estimateSinglePose(imageElement, imageScaleFactor, flipHorizontal, outputStride);
-        const poseJson = JSON.stringify(pose);
-        console.log(poseJson);
+        } catch (err2) {
+            console.log(`err2: ${err2}`);
+        }
     }
 }
 
@@ -63,7 +94,6 @@ async function run() {
         const args = parser.parseArgs();
         console.log(`Start with image: ${args.file_path}`);
         const poseNetRunner = new PoseNetRunner();
-        await poseNetRunner.init();
         await poseNetRunner.singlePose(args.file_path);
         console.log(`Done with image: ${args.file_path}`);
     } catch (err) {
