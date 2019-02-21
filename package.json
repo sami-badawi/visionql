@@ -22,8 +22,12 @@
   "homepage": "https://github.com/sami-badawi/visionql#readme",
   "dependencies": {
     "@google-cloud/vision": "^0.24.0",
+    "@tensorflow-models/posenet": "^0.2.3",
+    "@tensorflow/tfjs": "^0.13.5",
     "argparse": "^1.0.10",
-    "fs-extra": "^7.0.1"
+    "fs-extra": "^7.0.1",
+    "get-image-data": "github:michaelrhodes/get-image-data",
+    "sharp": "^0.21.3"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
